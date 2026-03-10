@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For You 💖</title>
+
+<title>For You ❤️</title>
 
 <style>
 
@@ -20,10 +22,10 @@ overflow:hidden;
 display:flex;
 align-items:center;
 justify-content:center;
-text-align:center;
 color:white;
-transition:background 4s linear;
+text-align:center;
 background:linear-gradient(45deg,#ff4e8a,#6a5cff);
+transition:background 3s linear;
 }
 
 .page{
@@ -34,9 +36,9 @@ display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:center;
-padding:20px;
 opacity:0;
-transition:1s;
+transition:0.8s;
+padding:20px;
 }
 
 .active{
@@ -53,28 +55,28 @@ text-shadow:0 0 10px black;
 width:75%;
 max-width:300px;
 border-radius:20px;
-margin-bottom:25px;
+margin-bottom:20px;
 box-shadow:0 10px 25px rgba(0,0,0,0.5);
 }
 
 button{
 padding:14px 35px;
+font-size:18px;
 border:none;
 border-radius:40px;
-font-size:18px;
 background:#ff4e8a;
 color:white;
 cursor:pointer;
-transition:.3s;
+transition:0.3s;
 }
 
 button:hover{
-transform:scale(1.08);
+transform:scale(1.1);
 }
 
 video{
 width:90%;
-max-width:400px;
+max-width:420px;
 border-radius:20px;
 box-shadow:0 10px 30px black;
 }
@@ -96,9 +98,17 @@ animation:float 6s linear infinite;
 
 @keyframes float{
 
-0%{transform:translateY(100vh);opacity:0;}
+0%{
+transform:translateY(100vh);
+opacity:0;
+}
+
 20%{opacity:1;}
-100%{transform:translateY(-10vh);opacity:0;}
+
+100%{
+transform:translateY(-10vh);
+opacity:0;
+}
 
 }
 
@@ -107,98 +117,115 @@ animation:float 6s linear infinite;
 
 <body>
 
-<audio id="song" src="tere-liye.mp3" loop></audio>
+<!-- BACKGROUND SONG -->
+
+<audio id="bgSong" src="tere-liye.mp3" loop></audio>
 
 <div class="hearts" id="hearts"></div>
 
 <!-- PAGE 1 -->
 
-<div class="page active" id="p1">
+<div class="page active" id="page1">
 <h1>Hey 😊<br>I made something special for you</h1>
-<button onclick="next()">Open ❤️</button>
+<button onclick="nextPage()">Open ❤️</button>
 </div>
 
 <!-- PAGE 2 -->
 
-<div class="page" id="p2">
+<div class="page" id="page2">
 <img src="photo1.jpg" class="photo">
 <h1>You are really special ✨</h1>
-<button onclick="next()">Next</button>
+<button onclick="nextPage()">Next</button>
 </div>
 
 <!-- PAGE 3 -->
 
-<div class="page" id="p3">
+<div class="page" id="page3">
 <img src="photo2.jpg" class="photo">
-<h1>Your smile makes everything better 😊</h1>
-<button onclick="next()">Next</button>
+<h1>Your smile makes everything brighter 😊</h1>
+<button onclick="nextPage()">Next</button>
 </div>
 
 <!-- PAGE 4 -->
 
-<div class="page" id="p4">
+<div class="page" id="page4">
 <img src="photo3.jpg" class="photo">
 <h1>I enjoy every moment talking with you 💬</h1>
-<button onclick="next()">Next</button>
+<button onclick="nextPage()">Next</button>
 </div>
 
 <!-- PAGE 5 -->
 
-<div class="page" id="p5">
+<div class="page" id="page5">
 <img src="photo4.jpg" class="photo">
 <h1>You are one of my favorite people ❤️</h1>
-<button onclick="next()">Next</button>
+<button onclick="nextPage()">Next</button>
 </div>
 
 <!-- PAGE 6 -->
 
-<div class="page" id="p6">
+<div class="page" id="page6">
 <img src="photo5.jpg" class="photo">
 <h1>Your laugh is my favorite sound 🎶</h1>
-<button onclick="next()">Next</button>
+<button onclick="nextPage()">Next</button>
 </div>
 
 <!-- PAGE 7 -->
 
-<div class="page" id="p7">
+<div class="page" id="page7">
 <img src="photo6.jpg" class="photo">
 <h1>Life feels brighter with you ✨</h1>
-<button onclick="next()">Next</button>
+<button onclick="nextPage()">Next</button>
 </div>
 
 <!-- PAGE 8 -->
 
-<div class="page" id="p8">
+<div class="page" id="page8">
 <img src="photo7.jpg" class="photo">
 <h1>Just wanted to remind you<br>you are amazing 💖</h1>
-<button onclick="next()">Final</button>
+<button onclick="nextPage()">Final Surprise</button>
 </div>
 
 <!-- PAGE 9 VIDEO -->
 
-<div class="page" id="p9">
-<h1>This one is for you 🎥</h1>
-<video src="video1.mp4" controls autoplay></video>
+<div class="page" id="page9">
+<h1>This is for you 🎥</h1>
+<video id="video" src="video1.mp4" controls></video>
 </div>
 
 <script>
 
-let page=1
+let current=1
 let total=9
+let songStarted=false
 
-function next(){
+function nextPage(){
 
-document.getElementById("p"+page).classList.remove("active")
+document.getElementById("page"+current).classList.remove("active")
 
-page++
+current++
 
-if(page<=total){
+if(current<=total){
 
-document.getElementById("p"+page).classList.add("active")
+document.getElementById("page"+current).classList.add("active")
 
 }
 
-document.getElementById("song").play()
+if(!songStarted){
+
+document.getElementById("bgSong").play()
+
+songStarted=true
+
+}
+
+if(current===9){
+
+document.getElementById("bgSong").pause()
+
+document.getElementById("video").play()
+
+}
 
 createHeart()
 
@@ -206,25 +233,31 @@ createHeart()
 
 function createHeart(){
 
-let h=document.createElement("div")
-h.className="heart"
-h.innerHTML="💖"
-h.style.left=Math.random()*100+"%"
-h.style.animationDuration=(4+Math.random()*3)+"s"
+let heart=document.createElement("div")
 
-document.getElementById("hearts").appendChild(h)
+heart.className="heart"
 
-setTimeout(()=>{h.remove()},7000)
+heart.innerHTML="💖"
+
+heart.style.left=Math.random()*100+"%"
+
+heart.style.animationDuration=(4+Math.random()*3)+"s"
+
+document.getElementById("hearts").appendChild(heart)
+
+setTimeout(()=>heart.remove(),7000)
 
 }
 
-setInterval(createHeart,800)
+setInterval(createHeart,900)
 
 const colors=[
+
 "linear-gradient(45deg,#ff4e8a,#6a5cff)",
-"linear-gradient(45deg,#ff6a88,#ff99ac)",
 "linear-gradient(45deg,#ff758c,#ff7eb3)",
+"linear-gradient(45deg,#ff6a88,#ff99ac)",
 "linear-gradient(45deg,#43cea2,#185a9d)"
+
 ]
 
 let i=0
