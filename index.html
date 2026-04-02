@@ -3,30 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Small Surprise For You ✨</title>
+    <title>A Special Surprise ✨</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --deep-pink: #ff4d94;
             --rose-gold: #ffccd5;
-            --soft-blush: #ffffff; /* White Theme Base */
+            --soft-blush: #ffffff;
             --heart-glow: #ff85a2;
-            --romantic-purple: #f8bbd0;
-            --golden-hour: #ffd700;
             --glass-white: rgba(255, 255, 255, 0.95);
-            --ultra-glow: 0 0 20px rgba(255, 77, 148, 0.4);
         }
 
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-            font-family: 'Poppins', sans-serif; 
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         
         body { 
-            background: #ffffff; /* Pure White Theme */
+            background: #ffffff; 
             color: #444; 
             overflow: hidden; 
             height: 100vh; 
@@ -36,146 +28,104 @@
             position: relative;
         }
 
-        /* Top Instagram Follow Button */
+        /* Insta Follow Header */
         #credit { 
-            position: fixed; 
-            top: 15px; 
-            width: 100%; 
-            text-align: center; 
-            z-index: 1000; 
+            position: fixed; top: 20px; width: 100%; text-align: center; z-index: 1000; 
         }
-        .insta-btn {
-            background: rgba(255, 255, 255, 0.9);
+        .insta-tag {
+            background: var(--glass-white);
             padding: 8px 20px;
             border-radius: 50px;
             text-decoration: none;
             color: var(--deep-pink);
             font-weight: 600;
-            font-size: 13px;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             border: 1px solid var(--rose-gold);
             transition: 0.3s;
         }
-        .insta-btn:hover {
-            transform: scale(1.05);
-            background: var(--deep-pink);
-            color: #fff;
-        }
 
-        /* Particle Systems */
+        /* Particles & Petals */
         .particles-container, .petals-container { 
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             pointer-events: none; z-index: 1; 
         }
-        .heart-particle {
-            position: absolute; 
-            animation: floatHearts 12s infinite linear;
-            opacity: 0.6;
-        }
+        .heart-particle { position: absolute; animation: floatHearts 12s infinite linear; opacity: 0.5; }
         @keyframes floatHearts {
             0% { transform: translateY(-10vh) scale(0.5) rotate(0deg); opacity: 0; }
             10% { opacity: 0.8; }
             100% { transform: translateY(110vh) scale(1.2) rotate(360deg); opacity: 0; }
         }
 
-        .container { 
-            width: 92%; max-width: 450px; height: 80vh; position: relative; z-index: 10; 
-        }
-
-        /* Page Transitions */
+        /* Container & Pages */
+        .container { width: 92%; max-width: 450px; height: 85vh; position: relative; z-index: 10; }
         .page {
             position: absolute; width: 100%; height: 100%;
             background: var(--glass-white);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
             border-radius: 40px;
-            padding: 40px 30px;
+            padding: 40px 25px;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             text-align: center;
             border: 1px solid #f0f0f0;
             box-shadow: 0 20px 60px rgba(0,0,0,0.05);
             opacity: 0; visibility: hidden;
-            transform: scale(0.95);
+            transform: translateY(20px) scale(0.95);
             transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
         }
-
-        .page.active { 
-            opacity: 1; visibility: visible; 
-            transform: scale(1); 
-        }
+        .page.active { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
 
         /* Glowing Text */
         .glowing-text {
             font-family: 'Dancing Script', cursive;
-            font-size: clamp(2rem, 5vw, 3rem);
+            font-size: 2.5rem;
             color: var(--deep-pink);
-            text-shadow: var(--ultra-glow);
+            text-shadow: 0 0 15px rgba(255, 77, 148, 0.3);
             margin-bottom: 20px;
         }
 
-        /* Image Frame */
+        /* Frames & Images */
         .img-frame {
-            width: 180px; height: 180px;
-            border-radius: 50%;
-            padding: 8px;
-            background: #fff;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 25px;
-            border: 2px solid var(--rose-gold);
+            width: 180px; height: 180px; border-radius: 50%; padding: 8px;
+            background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 25px; border: 2px solid var(--rose-gold);
         }
-        .img-frame img { 
-            width: 100%; height: 100%; 
-            border-radius: 50%; 
-            object-fit: cover;
+        .img-frame img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+
+        /* Polaroid Stack */
+        .stack { position: relative; width: 100%; height: 250px; margin-bottom: 30px; perspective: 1000px; }
+        .polaroid {
+            width: 150px; background: white; padding: 10px 10px 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            position: absolute; border-radius: 5px; transition: 0.5s;
         }
+        .polaroid img { width: 100%; height: 130px; object-fit: cover; border-radius: 2px; }
 
         /* Buttons */
         button {
-            padding: 15px 35px; 
-            border-radius: 50px; 
-            border: none;
-            background: var(--deep-pink);
-            color: white;
-            font-weight: 600; 
-            cursor: pointer; 
-            transition: 0.3s;
-            margin-top: 15px;
+            padding: 15px 35px; border-radius: 50px; border: none;
+            background: var(--deep-pink); color: white; font-weight: 600; 
+            cursor: pointer; transition: 0.3s; margin-top: 15px;
             box-shadow: 0 8px 20px rgba(255, 77, 148, 0.3);
         }
         button:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(255, 77, 148, 0.4); }
 
-        /* Polaroid Stack */
-        .stack { position: relative; width: 100%; height: 220px; margin-bottom: 30px; }
-        .polaroid {
-            width: 140px; background: white; padding: 10px 10px 25px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            position: absolute; border-radius: 5px;
-        }
-        .polaroid img { width: 100%; height: 120px; object-fit: cover; border-radius: 3px; }
-
         /* Meter */
-        .meter-wrap { width: 100%; height: 10px; background: #eee; border-radius: 10px; margin: 20px 0; overflow: hidden; }
-        .meter-bar { width: 0%; height: 100%; background: var(--deep-pink); transition: 4s linear; }
+        .meter-wrap { width: 100%; height: 12px; background: #eee; border-radius: 10px; margin: 20px 0; overflow: hidden; }
+        .meter-bar { width: 0%; height: 100%; background: linear-gradient(90deg, var(--rose-gold), var(--deep-pink)); transition: 4s linear; }
 
-        /* No Button */
-        .no-btn { 
-            background: #f5f5f5; color: #888; box-shadow: none; position: absolute;
-        }
+        /* No Button Logic */
+        .no-btn { background: #f5f5f5; color: #888; box-shadow: none; position: absolute; z-index: 100; transition: 0.2s ease-out; }
 
-        /* Popup */
-        .popup { 
-            position: fixed; inset: 0; background: rgba(255,255,255,0.9); 
-            display: none; z-index: 3000; justify-content: center; align-items: center; 
-        }
-        .pop-card { background: white; padding: 30px; border-radius: 30px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.1); border: 1px solid #eee; }
+        /* Gallery Scroll */
+        .gallery-scroll { display: flex; gap: 15px; overflow-x: auto; padding: 10px; width: 100%; scrollbar-width: none; }
+        .gallery-img { width: 120px; height: 120px; border-radius: 20px; object-fit: cover; flex-shrink: 0; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body>
 
     <div id="credit">
-        <a href="https://instagram.com/smss1708" class="insta-btn" target="_blank">
-            <i class="fab fa-instagram"></i> Follow on Insta: @smss1708
-        </a>
+        <a href="https://instagram.com/smss1708" class="insta-tag" target="_blank">@smss1708</a>
     </div>
     
     <div class="particles-container" id="particles"></div>
@@ -184,74 +134,88 @@
     <div class="container">
         <div class="page active" id="p1">
             <h1 class="glowing-text">Hey there... ✨</h1>
-            <div class="img-frame"><img src="photo1.jpg" alt="Intro"></div>
-            <p style="color: #777; margin-bottom: 20px;">I made something small for a person with a great vibe.</p>
+            <div class="img-frame"><img src="photo1.jpg"></div>
+            <p style="color: #666;">I made a little something for a person with a great vibe.</p>
             <button onclick="startApp()">Open Surprise 🎁</button>
         </div>
 
         <div class="page" id="p2">
             <h2 class="glowing-text">You're Unique! 🌸</h2>
-            <p style="line-height: 1.6; color: #666;">There’s something very peaceful about your personality that caught my attention.</p>
+            <p style="color: #555;">There's something very peaceful about your aura that caught my attention.</p>
             <button onclick="next(3)">Next ✨</button>
         </div>
 
         <div class="page" id="p3">
             <h2 class="glowing-text">Vibe Check...</h2>
             <div class="meter-wrap"><div class="meter-bar" id="bar"></div></div>
-            <p id="mText">Analyzing vibes...</p>
+            <p id="mText">Analyzing your vibe...</p>
             <button id="mNext" style="display:none" onclick="next(4)">Continue ♾️</button>
         </div>
 
-        <div class="page" id="p5">
+        <div class="page" id="p4">
             <h2 class="glowing-text">Pretty Moments</h2>
             <div class="stack">
-                <div class="polaroid" style="top:0; left:10%; transform: rotate(-5deg);"><img src="photo2.jpg"></div>
-                <div class="polaroid" style="top:20px; right:10%; transform: rotate(5deg);"><img src="photo3.jpg"></div>
+                <div class="polaroid" style="top:0; left:5%; transform: rotate(-8deg);"><img src="photo2.jpg"></div>
+                <div class="polaroid" style="top:20px; right:5%; transform: rotate(8deg);"><img src="photo3.jpg"></div>
             </div>
-            <button onclick="next(6)">More... ➡️</button>
+            <button onclick="next(5)">Keep Going ➡️</button>
         </div>
 
-        <div class="page" id="p8">
-            <h2 class="glowing-text">I just wanted to say...</h2>
-            <p style="font-size: 20px; color: var(--deep-pink); margin-bottom: 30px;">
-                I really like your vibe. <br> <strong>Can we be friends?</strong>
+        <div class="page" id="p5">
+            <h2 class="glowing-text">Aesthetic Vibes</h2>
+            <div class="gallery-scroll">
+                <img src="photo4.jpg" class="gallery-img">
+                <img src="photo5.jpg" class="gallery-img">
+                <img src="photo6.jpg" class="gallery-img">
+                <img src="photo7.jpg" class="gallery-img">
+            </div>
+            <button onclick="next(6)">Final Surprise 💌</button>
+        </div>
+
+        <div class="page" id="p6">
+            <h2 class="glowing-text">I wanted to ask...</h2>
+            <p style="font-size: 1.2rem; color: #444; margin-bottom: 30px;">
+                Your vibe is amazing. <br> <strong>Can we be friends?</strong>
             </p>
-            <button onclick="next(9)">Yes, sure! 😊</button>
+            <button onclick="next(7)">Yes, definitely! 😊</button>
             <button class="no-btn" id="no" onmouseover="moveNo()">Nah... 😅</button>
         </div>
 
-        <div class="page" id="p9">
-            <h1 class="glowing-text">That's Great! ❤️</h1>
-            <p style="color: #666;">I'm glad you liked this little surprise.</p>
-            <div style="display: flex; gap: 10px; margin-top: 20px;">
-                <img src="photo8.jpg" style="width:70px; height:70px; border-radius:50%; border:2px solid var(--rose-gold);">
-                <img src="photo9.jpg" style="width:70px; height:70px; border-radius:50%; border:2px solid var(--rose-gold);">
-                <img src="photo10.jpg" style="width:70px; height:70px; border-radius:50%; border:2px solid var(--rose-gold);">
+        <div class="page" id="p7">
+            <h1 class="glowing-text">That's Awesome! ❤️</h1>
+            <p style="color: #666; margin-bottom: 20px;">Glad to know that! Have a wonderful day ahead.</p>
+            <div style="display: flex; gap: 10px;">
+                <img src="photo8.jpg" style="width:60px; height:60px; border-radius:50%; border:2px solid var(--rose-gold);">
+                <img src="photo9.jpg" style="width:60px; height:60px; border-radius:50%; border:2px solid var(--rose-gold);">
+                <img src="photo10.jpg" style="width:60px; height:60px; border-radius:50%; border:2px solid var(--rose-gold);">
             </div>
-            <p style="font-size: 14px; color: var(--deep-pink); margin-top: 20px;">Have a wonderful day! ✨</p>
+            <p style="font-size: 12px; color: var(--deep-pink); margin-top: 20px;">@smss1708 ✨</p>
         </div>
     </div>
 
     <script>
-        // Particles
-        function createParticles() {
+        // Particle Engine
+        function initParticles() {
             const container = document.getElementById('particles');
-            const icons = ['✨', '🌸', '💖', '⭐'];
-            for(let i = 0; i < 20; i++) {
+            const icons = ['✨', '🌸', '💖', '⭐', '☁️'];
+            for(let i = 0; i < 25; i++) {
                 const p = document.createElement('div');
                 p.className = 'heart-particle';
                 p.innerHTML = icons[Math.floor(Math.random()*icons.length)];
                 p.style.left = Math.random() * 100 + 'vw';
+                p.style.fontSize = (Math.random() * 10 + 10) + 'px';
                 p.style.animationDelay = Math.random() * 5 + 's';
+                p.style.animationDuration = (Math.random() * 5 + 10) + 's';
                 container.appendChild(p);
             }
         }
-        createParticles();
+        initParticles();
 
         let musicStarted = false;
         function startApp() {
             if (!musicStarted) {
-                document.getElementById('bgMusic').play().catch(e => {});
+                const music = document.getElementById('bgMusic');
+                music.play().catch(() => {});
                 musicStarted = true;
             }
             next(2);
@@ -260,10 +224,10 @@
         function next(id) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             setTimeout(() => {
-                const target = document.getElementById('p'+id);
-                if(target) target.classList.add('active');
+                const p = document.getElementById('p'+id);
+                if(p) p.classList.add('active');
             }, 100);
-            
+
             if(id === 3) {
                 const bar = document.getElementById('bar');
                 const mText = document.getElementById('mText');
@@ -272,6 +236,7 @@
                     setTimeout(() => {
                         mText.innerHTML = "Vibe Match: 100% ✨";
                         document.getElementById('mNext').style.display = "block";
+                        createExplosion();
                     }, 4000);
                 }, 500);
             }
@@ -284,6 +249,24 @@
             btn.style.position = 'fixed';
             btn.style.left = x + 'px';
             btn.style.top = y + 'px';
+        }
+
+        function createExplosion() {
+            for(let i = 0; i < 15; i++) {
+                const h = document.createElement('div');
+                h.innerHTML = '💖';
+                h.style.position = 'fixed';
+                h.style.left = '50%'; h.style.top = '50%';
+                h.style.zIndex = '2000';
+                document.body.appendChild(h);
+                const angle = Math.random() * Math.PI * 2;
+                const dist = 100 + Math.random() * 150;
+                h.animate([
+                    { transform: 'translate(-50%, -50%) scale(0)', opacity: 1 },
+                    { transform: `translate(${Math.cos(angle)*dist}px, ${Math.sin(angle)*dist}px) scale(1.5)`, opacity: 0 }
+                ], { duration: 1000, fill: 'forwards' });
+                setTimeout(() => h.remove(), 1000);
+            }
         }
     </script>
 </body>
